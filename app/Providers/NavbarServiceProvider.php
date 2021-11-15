@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class NavbarServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * Register any application services.
      *
      * @return void
      */
@@ -18,15 +18,12 @@ class NavbarServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap services.
+     * Bootstrap any application services.
      *
      * @return void
      */
     public function boot()
     {
-        View::composer('*', function($view)
-{
-    $view->with('test','Test value');
-});
+        View::share('key', 'value');
     }
 }

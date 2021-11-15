@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
-        <title>E-Commerce - @yield('title')</title>
+        <title>e-Walmart - @yield('title')</title>
     </head>
     <body>
         <div id="app">

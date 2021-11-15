@@ -1,9 +1,12 @@
 <div class="ui top fixed menu">
   <div class="item">
-    <?= $test ?>
+    e-Walmart
   </div>
+
+  <a class="item"><i class="shopping basket icon"></i> Shop</a>
+
   <div class="ui dropdown item">
-    Categories
+    <i class="tags icon"></i> Categories
     <i class="dropdown icon"></i>
     <div class="menu">
       <a class="item">Electronics</a>
@@ -12,9 +15,29 @@
     </div>
   </div>
 
-  <a class="item">Testimonials</a>
-  <a class="item">Sign-in</a>
-  <div class="item">
-    <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 5px;">12</div>
+  <div class="right menu">
+    {{-- User not authenticated --}}
+    {{-- <div class="ui dropdown item">
+      <i class="user circle icon"></i> User
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">Register</a>
+        <a class="item">Login</a>
+      </div>
+    </div> --}}
+    
+    {{-- User authenticated --}}
+    <div class="ui dropdown item">
+      <i class="user circle icon"></i> MrAnyx
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">Log out</a>
+      </div>
+    </div>
+
+    <a class="item">
+      <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">12</div>
+    </a>
   </div>
+
 </div>
