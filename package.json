@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "semantic-ui-css": "^2.4.1",
         "vue-loader": "^15.9.8"
     }
 }

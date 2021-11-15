@@ -1,3 +1,4 @@
-- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Semantic UI](https://semantic-ui.com/)
 - [Laravel Shopping Cart](https://github.com/darryldecode/laravelshoppingcart)
 - [Administration dashboard](https://laraadmin.com/docs/1.0)
+- [Global variable in views](https://stackoverflow.com/a/29716181/11424334)
