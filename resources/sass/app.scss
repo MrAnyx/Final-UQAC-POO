@@ -1,5 +1,9 @@
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~semantic-ui-css/semantic.min.css';
+@import "~semantic-ui-css/semantic.min.css";
+
+#layout_container {
+	padding-top: 48px;
+}

@@ -9,7 +9,9 @@
     <body>
         <div id="app">
             @include('components.navbar')
-            @yield('content')
+            <div id="layout_container">
+                @yield('content')
+            </div>
         </div>
         <script src="{{mix('js/app.js')}}"></script>
         <script src="{{mix('js/navbar.js')}}"></script>
