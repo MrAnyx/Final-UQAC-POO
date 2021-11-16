@@ -1,6 +1,6 @@
 <div class="ui top fixed menu">
   <div class="item">
-    e-Walmart
+    <img src="{{ asset('storage/images/logo_horizontal.png') }}" alt="" class="ui" id="logo-navbar">
   </div>
 
   <a class="item" href="{{ route('app_home') }}"><i class="shopping basket icon"></i> Shop</a>
@@ -17,23 +17,27 @@
 
   <div class="right menu">
     {{-- User not authenticated --}}
-    <div class="ui dropdown item">
-      <i class="user circle icon"></i> User
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item">Login</a>
-        <a class="item">Register</a>
+    @guest
+      <div class="ui dropdown item">
+        <i class="user circle icon"></i> User
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="{{route('login')}}">Login</a>
+          <a class="item" href="{{route('register')}}">Register</a>
+        </div>
       </div>
-    </div>
+    @endguest
     
     {{-- User authenticated --}}
-    {{-- <div class="ui dropdown item">
-      <i class="user circle icon"></i> MrAnyx
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item">Log out</a>
+    @auth
+      <div class="ui dropdown item">
+        <i class="user circle icon"></i> {{auth()->user()->name}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="{{route('logout')}}">Log out</a>
+        </div>
       </div>
-    </div> --}}
+    @endauth
 
     <a class="item">
       <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">12</div>

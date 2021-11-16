@@ -4,6 +4,11 @@
 // Bootstrap
 @import "~semantic-ui-css/semantic.min.css";
 
+#logo-navbar {
+	width: unset;
+	height: 20px;
+}
+
 #layout_container {
 	padding-top: 48px;
 }

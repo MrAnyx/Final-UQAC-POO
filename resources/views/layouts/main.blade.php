@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
-        <title>e-Walmart - @yield('title')</title>
+        
+        <title>Walmart - @yield('title')</title>
+        <link rel="icon" type="image/png" href="{{asset('storage/images/logo_minimal.png')}}" />
     </head>
     <body>
         <div id="app">
