@@ -18,7 +18,7 @@
                   @endforeach
                </div>
                <div class="header" style="margin-bottom: 18px">${{$item->price}}</div>
-              <cart-button :in-cart="false" :item-id="{{$item->id}}"></cart-button>
+              <cart-button :in-cart="{{$inCart[$item->id] ? 'true' : 'false'}}" :item-id="{{$item->id}}"></cart-button>
             </div>
             
          </div>

@@ -24,7 +24,7 @@ Route::name('app_')->group(function () {
 
 });
 
-Route::name('api_')->middleware('auth:sanctum')->prefix("/api")->group(function () {
+Route::name('api_')->prefix("/api")->group(function () {
    Route::patch('/cart/{itemId}', [ApiController::class, "updateCart"])->name("api_UpdateCart");
    Route::get('/cart/quantity', [ApiController::class, "getCartQuantity"])->name("api_CartQuantity");
    Route::get('/cart/destroy', [ApiController::class, "destroyCart"])->name("api_DestroyCart");

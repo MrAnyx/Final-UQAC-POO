@@ -14,26 +14,27 @@ class ApiController extends Controller {
       if (!Auth::check()) {
          return [
             "error" => true,
-            "type" => "auth",
+            "type" => "unauthorized",
          ];
       }
 
-      $userId = Auth::user()->id;
       $data = Request::all();
-      $article = Article::find($itemId);
 
       if ($data["type"] === "add") {
+         $article = Article::find($itemId);
          Cart::add($article, 1);
       } else if ($data["type"] === "remove") {
-         Cart::remove($article->id);
+         foreach (Cart::content() as $item) {
+            if ($item->id === $itemId) {
+               Cart::remove($item->rowId);
+               break;
+            }
+         }
       }
 
       return [
-         "erorr" => false,
+         "error" => false,
          "type" => "success",
-         "options" => [
-            "cartQuantity" => Cart::count(),
-         ],
       ];
 
    }

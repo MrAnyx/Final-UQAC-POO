@@ -3,15 +3,22 @@
 </template>
 
 <script>
+import { useStore } from "../stores/main";
+
 export default {
 	data() {
 		return {
 			count: 0,
+			store: null,
 		};
 	},
 	mounted() {
-		// console.log(window.$cartQuantity);
-		// this.count = this.$cartQuantity;
+		this.store = useStore();
+	},
+	watch: {
+		"store.cartCount": function (newVal, oldVal) {
+			this.count = this.store.cartCount;
+		},
 	},
 };
 </script>
