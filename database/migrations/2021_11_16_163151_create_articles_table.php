@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration {
          $table->id();
          $table->string("name");
          $table->string("image");
+         $table->float("price", 8, 2);
          $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
       });
    }

@@ -40,7 +40,9 @@
     @endauth
 
     <a class="item">
-      <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">12</div>
+      <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">
+        <cart-quantity></cart-quantity>
+      </div>
     </a>
   </div>
 

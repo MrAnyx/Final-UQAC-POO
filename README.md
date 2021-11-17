@@ -1,4 +1,5 @@
 - [Semantic UI](https://semantic-ui.com/)
-- [Laravel Shopping Cart](https://github.com/darryldecode/laravelshoppingcart)
+- [Laravel Shopping Cart](https://github.com/hardevine/LaravelShoppingcart)
 - [Administration dashboard](https://laraadmin.com/docs/1.0)
 - [Global variable in views](https://stackoverflow.com/a/29716181/11424334)
+- [Pinia](https://pinia.esm.dev/)

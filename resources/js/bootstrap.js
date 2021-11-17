@@ -1,17 +1,8 @@
-window._ = require('lodash');
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
+window._ = require("lodash");
 
 try {
-    // window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-
-    // require('bootstrap');
-    require("../../node_modules/semantic-ui-css/semantic.min.js")
+	window.$ = window.jQuery = require("jquery");
+	require("../../node_modules/semantic-ui-css/semantic.min.js");
 } catch (e) {}
 
 /**
@@ -20,23 +11,6 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from 'laravel-echo';
-
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";

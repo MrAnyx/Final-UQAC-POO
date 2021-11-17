@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Department;
 
 class MainController extends Controller {
    public function home() {
-      return view("home");
+      $items = Article::get();
+      return view("home", [
+         "items" => $items,
+      ]);
    }
 
    public function department(int $id) {

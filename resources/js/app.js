@@ -1,6 +1,8 @@
 require("./bootstrap");
+import axios from "axios";
 
 import Alpine from "alpinejs";
+import Vue from "vue";
 
 window.Alpine = Alpine;
 
@@ -16,10 +18,10 @@ window.Vue = require("vue").default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context("./components", true, /\.vue$/i);
+files.keys().map((key) => Vue.component(key.split("/").pop().split(".")[0], files(key).default));
 
-Vue.component("example-component", require("./components/ExampleComponent.vue").default);
+// Vue.component("example-component", require("./components/CartButton.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,3 +32,9 @@ Vue.component("example-component", require("./components/ExampleComponent.vue").
 const app = new Vue({
 	el: "#app",
 });
+
+// TODO Ajouter Pinia pour la gestion de la quantité du Cart
+
+// axios.get(`${process.env.MIX_API_ENDPOINT}/cart/quantity`).then(({ data }) => {
+// 	window.$cartQuantity = data;
+// });

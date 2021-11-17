@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ImageAssetController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', [MainController::class, "home"])->name("app_home");
-Route::get('/department/{id}', [MainController::class, "department"])->name("app_department");
+Route::name('app_')->group(function () {
+   Route::get('/', [MainController::class, "home"])->name("home");
+   Route::get('/department/{id}', [MainController::class, "department"])->name("department");
 
-Route::get('/dashboard', function () {
-   return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+   Route::get('/storage/{filename}', [ImageAssetController::class, "displayImage"])->name('displayImage');
+
+});
+
+Route::name('api_')->middleware('auth:sanctum')->prefix("/api")->group(function () {
+   Route::patch('/cart/{itemId}', [ApiController::class, "updateCart"])->name("api_UpdateCart");
+   Route::get('/cart/quantity', [ApiController::class, "getCartQuantity"])->name("api_CartQuantity");
+   Route::get('/cart/destroy', [ApiController::class, "destroyCart"])->name("api_DestroyCart");
+});
 
 require __DIR__ . '/auth.php';
