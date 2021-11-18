@@ -19,15 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::name('app_')->group(function () {
    Route::get('/', [MainController::class, "home"])->name("home");
    Route::get('/department/{id}', [MainController::class, "department"])->name("department");
+   Route::get('/cart', [MainController::class, "cart"])->name("cart");
+   Route::get('/cart/payment', [MainController::class, "payment"])->name("payment");
+   Route::get('/payment/validation', [MainController::class, "validation"])->name("validation");
 
    Route::get('/storage/{filename}', [ImageAssetController::class, "displayImage"])->name('displayImage');
 
 });
 
 Route::name('api_')->prefix("/api")->group(function () {
-   Route::patch('/cart/{itemId}', [ApiController::class, "updateCart"])->name("api_UpdateCart");
-   Route::get('/cart/quantity', [ApiController::class, "getCartQuantity"])->name("api_CartQuantity");
-   Route::get('/cart/destroy', [ApiController::class, "destroyCart"])->name("api_DestroyCart");
+   Route::patch('/cart/{itemId}', [ApiController::class, "updateCart"]);
+   Route::get('/cart/quantity', [ApiController::class, "getCartQuantity"]);
+   Route::get('/cart/destroy', [ApiController::class, "destroyCart"]);
+   Route::post('/cart/validate', [ApiController::class, "validateCart"]);
 });
 
 require __DIR__ . '/auth.php';

@@ -7,6 +7,9 @@
         
         <title>Walmart - @yield('title')</title>
         <link rel="icon" type="image/png" href="{{asset('storage/images/logo_minimal.png')}}" />
+
+        @yield('head')
+
     </head>
     <body>
         <div id="app">

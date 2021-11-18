@@ -37,13 +37,13 @@
           <a class="item" href="{{route('logout')}}">Log out</a>
         </div>
       </div>
+      
+      <a class="item" href="{{route('app_cart')}}">
+        <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">
+          <cart-quantity></cart-quantity>
+        </div>
+      </a>
     @endauth
-
-    <a class="item">
-      <i class="icon shopping cart"></i><div class="ui teal horizontal label" style="margin: 0 0; margin-left: 3px;">
-        <cart-quantity></cart-quantity>
-      </div>
-    </a>
   </div>
 
 </div>

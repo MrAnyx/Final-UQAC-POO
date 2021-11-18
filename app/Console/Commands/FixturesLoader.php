@@ -234,7 +234,7 @@ class FixturesLoader extends Command {
 
          $article_db = Article::create([
             "name" => $articleName,
-            "image" => "items" . DIRECTORY_SEPARATOR . $image->getFilename(),
+            "image" => "items/" . $image->getFilename(),
             "price" => $departments[$imageName]["price"],
          ]);
 

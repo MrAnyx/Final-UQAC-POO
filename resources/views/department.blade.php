@@ -1,8 +1,7 @@
 @extends('layouts.main')
-@section('title', $department->name)
+@section('title', "Departments")
 
 @section('content')
-    
-<h1>{{$department->name}}</h1>
-
+<h1 class="ui header" style="text-align: center; margin-top: 20px;">{{$department->name}}</h1>
+@include('components.items')
 @endsection

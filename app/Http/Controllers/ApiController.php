@@ -22,7 +22,14 @@ class ApiController extends Controller {
 
       if ($data["type"] === "add") {
          $article = Article::find($itemId);
-         Cart::add($article, 1);
+         $departments = [];
+         foreach ($article->departments()->get() as $department) {
+            $departments[] = [
+               "name" => $department->name,
+               "id" => $department->id,
+            ];
+         }
+         Cart::add($article, 1, ['departments' => $departments, "image" => $article->image]);
       } else if ($data["type"] === "remove") {
          foreach (Cart::content() as $item) {
             if ($item->id === $itemId) {
@@ -48,6 +55,11 @@ class ApiController extends Controller {
    }
 
    public function destroyCart() {
-      return Cart::destroy();
+      Cart::destroy();
    }
+
+   public function validateCart() {
+      $this->destroyCart();
+   }
+
 }
