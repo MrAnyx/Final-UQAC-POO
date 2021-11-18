@@ -62,4 +62,8 @@ class ApiController extends Controller {
       $this->destroyCart();
    }
 
+   public function emptyCart() {
+      $this->destroyCart();
+   }
+
 }

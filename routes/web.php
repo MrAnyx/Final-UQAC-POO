@@ -21,7 +21,7 @@ Route::name('app_')->group(function () {
    Route::get('/department/{id}', [MainController::class, "department"])->name("department");
    Route::get('/cart', [MainController::class, "cart"])->name("cart");
    Route::get('/cart/payment', [MainController::class, "payment"])->name("payment");
-   Route::get('/payment/validation', [MainController::class, "validation"])->name("validation");
+   Route::get('/payment/validated', [MainController::class, "validation"])->name("validation");
 
    Route::get('/storage/{filename}', [ImageAssetController::class, "displayImage"])->name('displayImage');
 
@@ -32,6 +32,7 @@ Route::name('api_')->prefix("/api")->group(function () {
    Route::get('/cart/quantity', [ApiController::class, "getCartQuantity"]);
    Route::get('/cart/destroy', [ApiController::class, "destroyCart"]);
    Route::post('/cart/validate', [ApiController::class, "validateCart"]);
+   Route::delete('/cart/empty', [ApiController::class, "emptyCart"]);
 });
 
 require __DIR__ . '/auth.php';

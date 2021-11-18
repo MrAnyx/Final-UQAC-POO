@@ -1,5 +1,5 @@
 <template>
-	<a class="ui primary button" :class="{ loading: loading }" @click="proceed"><i class="credit card outline icon"></i> Proceed</a>
+	<a class="ui teal button" :class="{ loading: loading }" @click="proceed"><i class="credit card outline icon"></i> Proceed</a>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
 				$("#payment-validation").dimmer("show");
 				setTimeout(() => {
 					$("#payment-validation").dimmer("hide");
-					window.location.href = "/payment/validation";
+					window.location.href = "/payment/validated";
 				}, 2000);
 			});
 		},

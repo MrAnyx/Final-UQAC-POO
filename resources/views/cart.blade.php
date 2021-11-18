@@ -16,7 +16,7 @@
           <div class="description">Check if everything is correct</div>
         </div>
       </div>
-      <a class="step" href="{{route('app_payment')}}">
+      <a @class(['step', 'disabled' => $count === 0]) href="{{route('app_payment')}}">
         <div class="content">
           <div class="title">Payment</div>
           <div class="description">Proceed to payment</div>
@@ -59,37 +59,57 @@
 
             </div>
          </div>
-         <div class="extra content">
-            <a class="ui button fluid teal" href="{{route('app_payment')}}">Pay ${{$total}}</a>
-         </div>
+         @if ($count > 0)
+            <div class="extra content">
+               <a class="ui button fluid teal" href="{{route('app_payment')}}">Pay ${{$total}}</a>
+               <empty-cart></empty-cart>
+            </div>
+         @endif
+
       </div>
-      <div class="ui card fluid" style="flex: 1; margin: unset;">
+      <div class="ui card fluid" style="flex: 1; margin: unset; height: fit-content">
          
-         <div class="ui divided items">
+         @if ($count > 0)
+            <div class="ui divided items">
 
-            @foreach ($items as $item)
-               <div class="item" style="padding-left: 1em; padding-right: 1em;">
-                  <div class="ui small image" style="border-radius: 5px; overflow: hidden">
-                     <img src="{{route('app_displayImage', $item->options->image)}}">
-                  </div>
-                  <div class="middle aligned content" style="margin-left: 30px;">
-                     <div class="item">
-                        <div class="right floated content" style="padding-top: 3px; font-weight: 600">${{$item->price}}</div>
-                        <div style="font-weight: bold; font-size: 18px;">{{$item->name}}</div>
+               @foreach ($items as $item)
+                  <div class="item" style="padding-left: 1em; padding-right: 1em;">
+                     <div class="ui small image" style="border-radius: 5px; overflow: hidden">
+                        <img src="{{route('app_displayImage', $item->options->image)}}">
                      </div>
+                     <div class="middle aligned content" style="margin-left: 30px;">
+                        <div class="item">
+                           <div class="right floated content" style="padding-top: 3px; font-weight: 600">${{$item->price}}</div>
+                           <div style="font-weight: bold; font-size: 18px;">{{$item->name}}</div>
+                        </div>
 
-                     <div class="extra">
-                        @foreach ($item->options->departments as $department)
-                           <a class="ui label" href="{{route('app_department', ['id' => $department['id']])}}">{{$department["name"]}}</a>
-                        @endforeach
+                        <div class="extra">
+                           @foreach ($item->options->departments as $department)
+                              <a class="ui label" href="{{route('app_department', ['id' => $department['id']])}}">{{$department["name"]}}</a>
+                           @endforeach
+                        </div>
                      </div>
+                     
+                     
                   </div>
-                  
-                  
+               @endforeach
+
+            </div>
+         @else
+
+         <div class="ui placeholder fluid segment negative" style="min-height: 214px">
+            <div class="ui icon header">
+              <i class="x icon"></i>
+              <div style="width: 500px; margin: 15px auto;">
+                  We haven't found any article in you shopping cart
                </div>
-            @endforeach
-
+            </div>
+            <div class="inline">
+              <a class="ui teal button" href="{{route('app_home')}}"><i class="shopping cart icon"></i> Back to shopping</a>
+            </div>
           </div>
+             
+         @endif
       
       </div>
       
