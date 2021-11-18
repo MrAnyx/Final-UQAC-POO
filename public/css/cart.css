@@ -1,7 +1,1 @@
-.ui.divided.items > .item:first-child {
-  padding-top: 1em !important;
-}
-
-.ui.divided.items > .item:last-child {
-  padding-bottom: 1em !important;
-}
+.ui.divided.items>.item:first-child{padding-top:1em!important}.ui.divided.items>.item:last-child{padding-bottom:1em!important}
