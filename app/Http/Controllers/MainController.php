@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\aop\Annotation\Logging;
 use App\Models\Article;
 use App\Models\Department;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class MainController extends Controller {
+
+   /**
+    * @Logging
+    */
    public function home() {
       $items = Article::get();
 
