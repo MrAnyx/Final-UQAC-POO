@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\aop\Annotation\Logging;
 use App\Models\Article;
-// use Darryldecode\Cart\Cart;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class ApiController extends Controller {
+
+   /**
+    * @Logging
+    */
    public function updateCart(int $itemId) {
 
       if (!Auth::check()) {
@@ -46,6 +50,9 @@ class ApiController extends Controller {
 
    }
 
+   /**
+    * @Logging
+    */
    public function getCartQuantity() {
       if (!Auth::check()) {
          return 0;
@@ -54,14 +61,23 @@ class ApiController extends Controller {
       return Cart::count();
    }
 
+   /**
+    * @Logging
+    */
    public function destroyCart() {
       Cart::destroy();
    }
 
+   /**
+    * @Logging
+    */
    public function validateCart() {
       $this->destroyCart();
    }
 
+   /**
+    * @Logging
+    */
    public function emptyCart() {
       $this->destroyCart();
    }

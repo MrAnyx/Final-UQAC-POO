@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\aop\Annotation\Logging;
+use App\aop\Annotation\MustBeAuthenticated;
 use App\Models\Article;
 use App\Models\Department;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class MainController extends Controller {
+
+   /**
+    * @Logging
+    */
    public function home() {
       $items = Article::get();
 
@@ -26,6 +32,9 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    */
    public function department(int $id) {
       $department = Department::find($id);
 
@@ -47,6 +56,10 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    * @MustBeAuthenticated
+    */
    public function cart() {
       return view('cart', [
          "subtotal" => Cart::subtotal(),
@@ -57,10 +70,18 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    * @MustBeAuthenticated
+    */
    public function payment() {
       return view('payment');
    }
 
+   /**
+    * @Logging
+    * @MustBeAuthenticated
+    */
    public function validation() {
       return view('validation');
    }

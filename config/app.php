@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\AopServiceProvider;
+
 return [
 
    /*
@@ -167,6 +169,7 @@ return [
        */
       //   Darryldecode\Cart\CartServiceProvider::class,
       Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+      App\Providers\AopServiceProvider::class,
 
       /*
        * Application Service Providers...
