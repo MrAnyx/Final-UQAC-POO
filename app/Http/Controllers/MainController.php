@@ -31,6 +31,9 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    */
    public function department(int $id) {
       $department = Department::find($id);
 
@@ -52,6 +55,9 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    */
    public function cart() {
       return view('cart', [
          "subtotal" => Cart::subtotal(),
@@ -62,10 +68,16 @@ class MainController extends Controller {
       ]);
    }
 
+   /**
+    * @Logging
+    */
    public function payment() {
       return view('payment');
    }
 
+   /**
+    * @Logging
+    */
    public function validation() {
       return view('validation');
    }

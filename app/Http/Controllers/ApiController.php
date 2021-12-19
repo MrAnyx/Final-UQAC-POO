@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-// use Darryldecode\Cart\Cart;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -11,12 +10,12 @@ use Illuminate\Support\Facades\Request;
 class ApiController extends Controller {
    public function updateCart(int $itemId) {
 
-      if (!Auth::check()) {
-         return [
-            "error" => true,
-            "type" => "unauthorized",
-         ];
-      }
+      // if (!Auth::check()) {
+      //    return [
+      //       "error" => true,
+      //       "type" => "unauthorized",
+      //    ];
+      // }
 
       $data = Request::all();
 

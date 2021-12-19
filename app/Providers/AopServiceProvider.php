@@ -25,10 +25,10 @@ class AopServiceProvider extends ServiceProvider {
       $applicationAspectKernel->init([
          'debug' => true, // use 'false' for production mode
          'appDir' => base_path(), // Application root directory
-         'cacheDir' => storage_path('app/aspect'), // Cache directory
+         'cacheDir' => storage_path('app\\aspect'), // Cache directory
          // Include paths restricts the directories where aspects should be applied, or empty for all source files
          'includePaths' => [
-            base_path() . "/app/",
+            base_path("app\\"),
          ],
       ]);
    }
