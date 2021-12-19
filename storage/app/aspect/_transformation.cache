@@ -1,87 +1,112 @@
 <?php return array (
   AOP_ROOT_DIR . '\\app\\Http\\Controllers\\ApiController.php' => 
   array (
-    'filemtime' => 1639946004,
-    'cacheUri' => NULL,
+    'filemtime' => 1639957793,
+    'cacheUri' => AOP_CACHE_DIR . '\\app\\Http\\Controllers\\ApiController.php',
   ),
   AOP_ROOT_DIR . '\\app\\Exceptions\\Handler.php' => 
   array (
-    'filemtime' => 1639945320,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => 
-  array (
-    'filemtime' => 1639944783,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\Authenticate.php' => 
-  array (
-    'filemtime' => 1639944783,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\aop\\Aspect\\LoggingAspect.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\TrustProxies.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\PreventRequestsDuringMaintenance.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\TrimStrings.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\aop\\Annotation\\Logging.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\MainController.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => AOP_CACHE_DIR . '\\app\\Http\\Controllers\\MainController.php',
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\Controller.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\EncryptCookies.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\VerifyCsrfToken.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Models\\User.php' => 
-  array (
-    'filemtime' => 1639944761,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Models\\Department.php' => 
-  array (
-    'filemtime' => 1639944761,
+    'filemtime' => 1639957753,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\Models\\Article.php' => 
   array (
-    'filemtime' => 1639944761,
+    'filemtime' => 1639957560,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Models\\Department.php' => 
+  array (
+    'filemtime' => 1639957560,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\Models\\ArticleDepartment.php' => 
   array (
-    'filemtime' => 1639944761,
+    'filemtime' => 1639957560,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php' => 
+  array (
+    'filemtime' => 1639957558,
+    'cacheUri' => AOP_CACHE_DIR . '\\app\\Http\\Controllers\\Auth\\AuthenticatedSessionController.php',
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\RedirectIfAuthenticated.php' => 
+  array (
+    'filemtime' => 1639957558,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\View\\Components\\GuestLayout.php' => 
+  array (
+    'filemtime' => 1639957558,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\aop\\Aspect\\MustBeAuthenticatedAspect.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\TrustProxies.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\PreventRequestsDuringMaintenance.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\TrimStrings.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\aop\\Annotation\\Logging.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\aop\\Annotation\\MustBeAuthenticated.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\MainController.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => AOP_CACHE_DIR . '\\app\\Http\\Controllers\\MainController.php',
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Controllers\\Controller.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\EncryptCookies.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\VerifyCsrfToken.php' => 
+  array (
+    'filemtime' => 1639957557,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\aop\\Aspect\\LoggingAspect.php' => 
+  array (
+    'filemtime' => 1639957325,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\Authenticate.php' => 
+  array (
+    'filemtime' => 1639956843,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Models\\User.php' => 
+  array (
+    'filemtime' => 1639956390,
+    'cacheUri' => NULL,
+  ),
+  AOP_ROOT_DIR . '\\app\\Http\\Requests\\Auth\\LoginRequest.php' => 
+  array (
+    'filemtime' => 1639956052,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\Console\\Kernel.php' => 
@@ -92,21 +117,6 @@
   AOP_ROOT_DIR . '\\app\\Console\\Commands\\FixturesLoader.php' => 
   array (
     'filemtime' => 1639943610,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Middleware\\RedirectIfAuthenticated.php' => 
-  array (
-    'filemtime' => 1639942528,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\Http\\Requests\\Auth\\LoginRequest.php' => 
-  array (
-    'filemtime' => 1639942451,
-    'cacheUri' => NULL,
-  ),
-  AOP_ROOT_DIR . '\\app\\View\\Components\\GuestLayout.php' => 
-  array (
-    'filemtime' => 1639942441,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\Providers\\AppServiceProvider.php' => 

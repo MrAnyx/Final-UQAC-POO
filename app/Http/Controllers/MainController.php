@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\aop\Annotation\Logging;
+use App\aop\Annotation\MustBeAuthenticated;
 use App\Models\Article;
 use App\Models\Department;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -57,6 +58,7 @@ class MainController extends Controller {
 
    /**
     * @Logging
+    * @MustBeAuthenticated
     */
    public function cart() {
       return view('cart', [
@@ -70,6 +72,7 @@ class MainController extends Controller {
 
    /**
     * @Logging
+    * @MustBeAuthenticated
     */
    public function payment() {
       return view('payment');
@@ -77,6 +80,7 @@ class MainController extends Controller {
 
    /**
     * @Logging
+    * @MustBeAuthenticated
     */
    public function validation() {
       return view('validation');

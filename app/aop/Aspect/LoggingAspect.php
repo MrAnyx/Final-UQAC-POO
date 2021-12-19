@@ -20,7 +20,7 @@ class LoggingAspect implements Aspect {
     * Method that will be called before real method
     *
     * @param MethodInvocation $invocation Invocation
-    * @Before("@execution(App\aop\Annotation\Logging)")
+    * @Before("@execution(App\aop\Annotation\Logging)", order=128)
     */
    public function loggingBeforeMethod(MethodInvocation $invocation) {
       $obj = $invocation->getThis();

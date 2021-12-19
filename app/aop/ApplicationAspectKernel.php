@@ -2,6 +2,7 @@
 namespace App\aop;
 
 use App\aop\Aspect\LoggingAspect;
+use App\aop\Aspect\MustBeAuthenticatedAspect;
 use Go\Core\AspectContainer;
 use Go\Core\AspectKernel;
 
@@ -19,5 +20,6 @@ class ApplicationAspectKernel extends AspectKernel {
     */
    protected function configureAop(AspectContainer $container) {
       $container->registerAspect(new LoggingAspect());
+      $container->registerAspect(new MustBeAuthenticatedAspect());
    }
 }
