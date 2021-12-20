@@ -1,12 +1,12 @@
 <?php return array (
   AOP_ROOT_DIR . '\\app\\aop\\Aspect\\LoggingAspect.php' => 
   array (
-    'filemtime' => 1639958004,
+    'filemtime' => 1639975508,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\aop\\Aspect\\MustBeAuthenticatedAspect.php' => 
   array (
-    'filemtime' => 1639958004,
+    'filemtime' => 1639975508,
     'cacheUri' => NULL,
   ),
   AOP_ROOT_DIR . '\\app\\Console\\Commands\\FixturesLoader.php' => 

@@ -11,10 +11,14 @@ Le but de ce projet était d'appliquer les principes de la programmation orient�
   - [Installation des librairies](#installation-des-librairies)
   - [Modification de certaines librairies](#modification-de-certaines-librairies)
   - [Création de la base de données](#création-de-la-base-de-données)
+  - [Manipulations complémentaires](#manipulations-complémentaires)
   - [Lancement du projet](#lancement-du-projet)
   - [Fonctionnalités](#fonctionnalités)
   - [AOP](#aop)
   - [Développement](#développement)
+    - [Modifier un composant VueJS existant](#modifier-un-composant-vuejs-existant)
+    - [Création d'un nouveau composant VueJS](#création-dun-nouveau-composant-vuejs)
+  - [Licence](#licence)
 
 ## Prérequis
 
@@ -109,6 +113,17 @@ php artisan fixtures:load
 
 Votre base de données devrait à présent être configurée et fonctionnelle.
 
+## Manipulations complémentaires
+
+Une commande devra être exécuté afin de lier l'espace de stockage des images avec le dossier public. En effet, les images sont stockées dans le dossier `storage`.
+
+Pour ce faire, exécutez la commande suivante : 
+```bash
+php artisan storage:link
+```
+
+Celle-ci créera un lien symbolique dans le dossier `public` qui pointe directement vers le dossier `storage/app/public`.
+
 ## Lancement du projet
 
 Deux méthodes sont possibles pour lancer un serveur de développement et ainsi visualiser le résultat du projet.
@@ -143,5 +158,196 @@ De cette manière, nous avons un projet réaliste dans lequel plusieurs fonction
 
 ## AOP
 
+Comme nous avons pu l'évoquer, le but même de ce projet était de montrer qu'il était possible de d'implémenter des aspects dans un projet web. Les aspects, en règles générales, permettent de supprimer, ou du moins de limiter, les préoccupations transversales d'un projet. Les préoccupation transversales sont des portions de code qui se répètent à plusieurs endroits.
+
+Étant un projet de petite envergure, nous n'avons pas pu implémenter de nombreux aspects. C'est pour cette raison que nous n'avons implémenté que 2 aspects :
+- Un aspect de Logging
+- Un aspect de sécurité
+
+L'aspect de logging permet de journaliser dans des fichiers de log les actions que l'utilisateur réalise sur le site comme par exemple :
+- Changer de page
+- Ajouter un article à son panier
+- Valider une commande
+- Effectuer le payement
+- Se connecter
+- ...
+
+Pour ce qui est de la sécurité, l'aspect sert à sécurisé les pages our lesquelles il est nécessaire d'être connecté. Par exemple, pour toutes les pages relatives au panier, nous avons sécurisé ses pages grâce à un aspect.
+
+Afin d'avoir un contrôle précis sur les endroits où les aspects doivent être exécuté, nous avons décidé d'utiliser les annotation de PHP.
+
+Voici à quoi peut ressembler un aspect.
+
+```php
+<?php
+
+namespace App\aop\Aspect;
+
+use Go\Aop\Aspect;
+use Go\Aop\Intercept\MethodInvocation;
+use Go\Lang\Annotation\Around;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
+class MustBeAuthenticatedAspect implements Aspect {
+
+   /**
+    * Method that will be called around real method
+    *
+    * @param MethodInvocation $invocation Invocation
+    * @Around("@execution(App\aop\Annotation\MustBeAuthenticated)", order=-128)
+    *
+    */
+   public function checkAroundMethod(MethodInvocation $invocation) {
+
+      if (Auth::user() === null) {
+         Log::info("Anonymous user was redirect to /login page");
+         return redirect()->route('login');
+      }
+   }
+}
+```
+
+Nous avons ensuite créé une annotation permettant d'indiquer les méthodes pour lesquelles l'aspect devra être exécuté.
+
+```php
+<?php
+
+namespace App\aop\Annotation;
+
+use Doctrine\Common\Annotations\Annotation;
+use Doctrine\Common\Annotations\Annotation\Target;
+
+/**
+ * @Annotation
+ * @Target("METHOD")
+ */
+class MustBeAuthenticated extends Annotation {
+}
+```
+
+Plutôt que de renseigner une annotation dans notre aspect, nous aurions pu renseigner un pointcut plus traditionnel avec le code suivante
+
+```php
+@Around("execution(public App\*->*(*))")
+```
+
+Toutefois, cette méthode est torp générique et ne permet pas de restreindre le champ d'action de notre action. Également, notre aspect risque d'être appelé lors de l'appel des fonctions de Laravel. 
+
+Nous avons ensuite enregistré l'ensemble de nos aspects avec la class suivante :
+
+```php
+<?php
+namespace App\aop;
+
+use App\aop\Aspect\LoggingAspect;
+use App\aop\Aspect\MustBeAuthenticatedAspect;
+use Go\Core\AspectContainer;
+use Go\Core\AspectKernel;
+
+class ApplicationAspectKernel extends AspectKernel {
+
+   /**
+    * Configure an AspectContainer with advisors, aspects and pointcuts
+    *
+    * @param AspectContainer $container
+    * @return void
+    */
+   protected function configureAop(AspectContainer $container) {
+      $container->registerAspect(new LoggingAspect());
+      $container->registerAspect(new MustBeAuthenticatedAspect());
+   }
+}
+```
+
+Enfin, nous avons créé le Container permettant de gérer le système d'aspect.
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AopServiceProvider extends ServiceProvider {
+   /**
+    * Register services.
+    *
+    * @return void
+    */
+   public function register() {
+
+   }
+
+   /**
+    * Bootstrap services.
+    *
+    * @return void
+    */
+   public function boot() {
+      $applicationAspectKernel = \App\aop\ApplicationAspectKernel::getInstance();
+      $applicationAspectKernel->init([
+         'debug' => true,
+         'appDir' => base_path(),
+         'cacheDir' => storage_path('app\\aspect'),
+         'includePaths' => [
+            base_path("app\\"),
+         ],
+      ]);
+   }
+}
+```
+
+Enfin, nous n'avions qu'à utiliser notre annotation afin de renseigner les méthodes pour lesquelles l'aspect devra être exécuté.
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\aop\Annotation\Logging;
+use App\aop\Annotation\MustBeAuthenticated;
+
+class MainController extends Controller {
+
+   /**
+    * @Logging
+    * @MustBeAuthenticated
+    */
+   public function payment() {
+      return view('payment');
+   }
+}
+```
+
 ## Développement
 
+Si vous souhaitez reprendre ce projet et le modifier, vous allez devoir installer de nouvelles librairies. En effet, pour le développement, NodeJS est nécessaire pour mettre à jour les composant VueJS qui sont utilisés à l'aide de Laravel MIX.
+
+1. Dans un premier temps, vous allez devoir installer les librairies nécessaires pour Laravel MIX.
+```bash
+npm install
+```
+
+### Modifier un composant VueJS existant
+
+Après la modification d'un composant VueJS, n'oubliez pas d'exécuter la commande :
+
+```bash
+npm run dev
+```
+
+Dans le cas ou effectuez plusieurs modifications aux composants VueJS, il est préférable d'utiliser la commande : 
+```bash
+npm run watch
+```
+
+De cette manière, les fichier javascipt dans le dossier `public/js` ainsi que les fichiers de style dans `public/css` seront mis à jour automatiquement dès un changement sont détéctés dans les fichiers `.js` et `.css/.scss` situé dans les dossier `ressources`.
+
+### Création d'un nouveau composant VueJS
+
+La création d'un nouveau composant sera prise en compte automatiquement. Vous n'aurez donc pas besoin d'enregistrer chaque composant.
+
+## Licence
+
+Ce projet est sous licence MIT. Vous trouverez la licence en détail dans le fichier `LICENSE`.
