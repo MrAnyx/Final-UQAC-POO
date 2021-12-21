@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Log;
  */
 class MustBeAuthenticatedAspect implements Aspect {
 
-   // @Around("execution(public App\*->*(*))")
-   // @Around("@execution(App\aop\Annotation\MustBeAuthenticated)")
-
    /**
     * Method that will be called around real method
     *
@@ -24,10 +21,11 @@ class MustBeAuthenticatedAspect implements Aspect {
     *
     */
    public function checkAroundMethod(MethodInvocation $invocation) {
-
       if (Auth::user() === null) {
          Log::info("Anonymous user was redirect to /login page");
          return redirect()->route('login');
+      } else {
+         return $invocation->proceed();
       }
    }
 }

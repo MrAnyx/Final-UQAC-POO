@@ -33,7 +33,10 @@ class LoggingAspect implements Aspect {
             $args[$invocation->getMethod()->getParameters()[$i]->getName()] = $invocation->getArguments()[$i];
          }
       }
+      $methodName = $invocation->getMethod()->getName();
+      $argsJson = json_encode($args);
+      $fullnameClass = get_class($obj);
 
-      Log::info("Authenticated ({$username}) : " . get_class($obj) . "->" . $invocation->getMethod()->getName() . " with args : " . json_encode($args));
+      Log::info("Authenticated ({$username}) : " . $fullnameClass . "->" . $methodName . " with args : " . $argsJson);
    }
 }
